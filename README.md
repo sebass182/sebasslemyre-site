@@ -1,17 +1,12 @@
-# sebasslemyre.com — static recreation
+# Sébastien Lemyre — Portfolio Architecte
 
-A static HTML/CSS recreation of the Wix portfolio site
-https://sebass182.wixsite.com/sebasslemyre — same pages, text, and images,
-rebuilt as a plain static site (no Wix dependency).
-
-## Pages
-- `index.html` — Accueil (home)
-- `web.html` — Web design (UX/UI) portfolio
-- `design.html` — Graphic / logo design gallery
-- `photos.html` — Travel photography gallery
+A single-page infographic-style resume/portfolio for Sébastien Lemyre,
+Senior UI/UX Designer. Built with Tailwind CSS (CDN) and Chart.js for the
+performance/skills diagrams.
 
 ## Run locally
-Just open `index.html` in a browser, or serve the folder with any static
+Just open `index.html` in a browser (requires internet access for the
+Tailwind and Chart.js CDN scripts), or serve the folder with any static
 file server, e.g.:
 
 ```
