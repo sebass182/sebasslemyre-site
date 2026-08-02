@@ -32,25 +32,26 @@
 
   .block{margin-bottom:44px;}
 
+  /* each column keeps its own label glued to its own content */
   .row{
     display:grid;
     grid-template-columns:1fr 2fr 1fr;
     gap:32px;
   }
   .row.thirds{grid-template-columns:1fr 1fr 1fr;}
-  .row.exp{grid-template-columns:1fr 1fr 2fr;}
+
+  .col{display:flex;flex-direction:column;}
+  .col .label{
+    padding-bottom:8px;
+    margin-bottom:20px;
+    border-bottom:1px solid var(--ink);
+  }
 
   .label{
     font-size:0.7rem;
     font-weight:700;
     letter-spacing:0.08em;
     text-transform:uppercase;
-  }
-
-  .headers{
-    padding-bottom:8px;
-    border-bottom:1px solid var(--ink);
-    margin-bottom:20px;
   }
 
   p{
@@ -67,13 +68,32 @@
     text-decoration:underline;
   }
 
+  /* experience: header row + repeating triplets, both share the same column template */
+  .exp-header{
+    display:grid;
+    grid-template-columns:1fr 1fr 2fr;
+    gap:32px;
+    padding-bottom:8px;
+    margin-bottom:20px;
+    border-bottom:1px solid var(--ink);
+  }
   .exp-grid{
     display:grid;
     grid-template-columns:1fr 1fr 2fr;
     gap:32px;
     row-gap:28px;
   }
+  .exp-entry{display:contents;}
   .exp-desc p{max-width:46ch;}
+  .exp-sub{
+    font-size:0.7rem;
+    font-weight:700;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    opacity:.55;
+    margin:0 0 4px;
+    display:none;
+  }
 
   .signature{
     margin-top:60px;
@@ -86,8 +106,22 @@
 
   @media (max-width:640px){
     .sheet{padding:40px 24px;}
-    .row, .row.thirds, .row.exp, .exp-grid{grid-template-columns:1fr;gap:18px;}
+
+    .row, .row.thirds{grid-template-columns:1fr;gap:36px;}
     .block{margin-bottom:32px;}
+
+    /* experience: hide the standalone header row (it has nothing to stay glued to)
+       and instead label each field inline per entry, so meaning survives the stack */
+    .exp-header{display:none;}
+    .exp-grid{grid-template-columns:1fr;gap:10px;}
+    .exp-entry{
+      display:grid;
+      padding-bottom:22px;
+      margin-bottom:6px;
+      border-bottom:1px solid rgba(26,26,219,0.15);
+    }
+    .exp-entry:last-child{border-bottom:none;}
+    .exp-sub{display:block;}
   }
 </style>
 </head>
@@ -96,96 +130,124 @@
 <div class="sheet">
 
   <div class="block">
-    <div class="row headers">
-      <span class="label">Contact</span>
-      <span class="label">About</span>
-      <span class="label">Resume</span>
-    </div>
     <div class="row">
-      <div class="contact">
-        <p>Sébastien Lemyre</p>
-        <p>514.442.8885</p>
-        <p>sebasslemyre@gmail.com</p>
-        <p>St-Jean-sur-Richelieu, QC</p>
+      <div class="col">
+        <span class="label">Contact</span>
+        <div class="contact">
+          <p>Sébastien Lemyre</p>
+          <p>514.442.8885</p>
+          <p>sebasslemyre@gmail.com</p>
+          <p>St-Jean-sur-Richelieu, QC</p>
+        </div>
       </div>
-      <div class="about">
-        <p>Designer UI/UX Senior cumulant plus de 20 ans d'expérience. Ma démarche repose sur la rigueur esthétique et l'alignement stratégique des interfaces sur les objectifs d'affaires. Expert en transition d'agence et optimisation de conversion (CRO), avec un passage clé chez SmartBug Media suite à la fusion Globalia.</p>
+      <div class="col">
+        <span class="label">About</span>
+        <div class="about">
+          <p>Designer UI/UX Senior cumulant plus de 20 ans d'expérience. Ma démarche repose sur la rigueur esthétique et l'alignement stratégique des interfaces sur les objectifs d'affaires. Expert en transition d'agence et optimisation de conversion (CRO), avec un passage clé chez SmartBug Media suite à la fusion Globalia.</p>
+        </div>
       </div>
-      <div class="resume">
-        <a href="https://linkedin.com/in/sébastien-lemyre-a2437113b/" target="_blank">LinkedIn</a>
-        <a href="https://sebass182.wixsite.com/slemyre" target="_blank">Portfolio</a>
+      <div class="col">
+        <span class="label">Resume</span>
+        <div class="resume">
+          <a href="https://linkedin.com/in/sébastien-lemyre-a2437113b/" target="_blank">LinkedIn</a>
+          <a href="https://sebass182.wixsite.com/slemyre" target="_blank">Portfolio</a>
+        </div>
       </div>
     </div>
   </div>
 
   <div class="block">
-    <div class="row thirds headers">
-      <span class="label">Expertise</span>
-      <span class="label">Intérêts</span>
-      <span class="label">Compétences</span>
-    </div>
     <div class="row thirds">
-      <div class="list">
-        <p>Suite Adobe CC</p>
-        <p>Figma & UI Design</p>
-        <p>WordPress</p>
+      <div class="col">
+        <span class="label">Expertise</span>
+        <div class="list">
+          <p>Suite Adobe CC</p>
+          <p>Figma & UI Design</p>
+          <p>WordPress</p>
+        </div>
       </div>
-      <div class="list">
-        <p>Photographie de voyage</p>
-        <p>Voyage & découverte</p>
-        <p>Réalisation vidéo (drone)</p>
+      <div class="col">
+        <span class="label">Intérêts</span>
+        <div class="list">
+          <p>Photographie de voyage</p>
+          <p>Voyage & découverte</p>
+          <p>Réalisation vidéo (drone)</p>
+        </div>
       </div>
-      <div class="list">
-        <p>CRO & optimisation</p>
-        <p>Prototypage</p>
-        <p>Design systems</p>
-        <p>Direction créative</p>
+      <div class="col">
+        <span class="label">Compétences</span>
+        <div class="list">
+          <p>CRO & optimisation</p>
+          <p>Prototypage</p>
+          <p>Design systems</p>
+          <p>Direction créative</p>
+        </div>
       </div>
     </div>
   </div>
 
   <div class="block">
-    <div class="row exp headers">
+    <div class="exp-header">
       <span class="label">Experience</span>
       <span class="label">Title</span>
       <span></span>
     </div>
     <div class="exp-grid">
 
-      <div class="exp-company">
-        <p>SmartBug Media</p>
-        <p>2023&mdash;Présent</p>
-      </div>
-      <div><p>Senior UI Web Designer (Remote)</p></div>
-      <div class="exp-desc">
-        <p>Pilotage de la vision UI/UX post-acquisition. Standardisation des livrables pour un marché international haute-fidélité.</p>
-      </div>
-
-      <div class="exp-company">
-        <p>Globalia</p>
-        <p>2022&mdash;2023</p>
-      </div>
-      <div><p>Senior UI Web Designer</p></div>
-      <div class="exp-desc">
-        <p>Gestion de portfolios stratégiques. Pont entre la création et le développement des affaires (Upsell/CRO).</p>
+      <div class="exp-entry">
+        <div class="exp-company">
+          <p>SmartBug Media</p>
+          <p>2023&mdash;Présent</p>
+        </div>
+        <div>
+          <p class="exp-sub">Title</p>
+          <p>Senior UI Web Designer (Remote)</p>
+        </div>
+        <div class="exp-desc">
+          <p>Pilotage de la vision UI/UX post-acquisition. Standardisation des livrables pour un marché international haute-fidélité.</p>
+        </div>
       </div>
 
-      <div class="exp-company">
-        <p>Inovision Web</p>
-        <p>2017&mdash;2020</p>
-      </div>
-      <div><p>Designer Web & UI/UX</p></div>
-      <div class="exp-desc">
-        <p>Spécialisation UX et intégration d'interfaces complexes sous WordPress.</p>
+      <div class="exp-entry">
+        <div class="exp-company">
+          <p>Globalia</p>
+          <p>2022&mdash;2023</p>
+        </div>
+        <div>
+          <p class="exp-sub">Title</p>
+          <p>Senior UI Web Designer</p>
+        </div>
+        <div class="exp-desc">
+          <p>Gestion de portfolios stratégiques. Pont entre la création et le développement des affaires (Upsell/CRO).</p>
+        </div>
       </div>
 
-      <div class="exp-company">
-        <p>Empire Sport</p>
-        <p>2012&mdash;2016</p>
+      <div class="exp-entry">
+        <div class="exp-company">
+          <p>Inovision Web</p>
+          <p>2017&mdash;2020</p>
+        </div>
+        <div>
+          <p class="exp-sub">Title</p>
+          <p>Designer Web & UI/UX</p>
+        </div>
+        <div class="exp-desc">
+          <p>Spécialisation UX et intégration d'interfaces complexes sous WordPress.</p>
+        </div>
       </div>
-      <div><p>Art Director & Branding</p></div>
-      <div class="exp-desc">
-        <p>Identité visuelle globale pour 11 boutiques. Design de produits dérivés et textile.</p>
+
+      <div class="exp-entry">
+        <div class="exp-company">
+          <p>Empire Sport</p>
+          <p>2012&mdash;2016</p>
+        </div>
+        <div>
+          <p class="exp-sub">Title</p>
+          <p>Art Director & Branding</p>
+        </div>
+        <div class="exp-desc">
+          <p>Identité visuelle globale pour 11 boutiques. Design de produits dérivés et textile.</p>
+        </div>
       </div>
 
     </div>
