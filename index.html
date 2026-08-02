@@ -32,13 +32,13 @@
 
   .block{margin-bottom:44px;}
 
-  /* each column keeps its own label glued to its own content */
+  /* each column keeps its own label glued to its own content;
+     same column template on every row so both rows line up */
   .row{
     display:grid;
-    grid-template-columns:1fr 2fr 1fr;
+    grid-template-columns:1fr 1fr 1fr;
     gap:32px;
   }
-  .row.thirds{grid-template-columns:1fr 1fr 1fr;}
 
   .col{display:flex;flex-direction:column;}
   .col .label{
