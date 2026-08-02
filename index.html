@@ -55,6 +55,15 @@
     color:var(--paper);
   }
 
+  .top-links a.primary{
+    background:var(--ink);
+    color:var(--paper);
+  }
+  .top-links a.primary:hover{
+    background:transparent;
+    color:var(--ink);
+  }
+
   .block{margin-bottom:44px;}
 
   /* each column keeps its own label glued to its own content;
@@ -149,10 +158,14 @@
   @media (max-width:640px){
     .sheet{padding:40px 24px;}
 
+    .signature{margin-bottom:20px;}
+
     .top-links{
       position:static;
-      align-items:flex-start;
-      margin-bottom:32px;
+      flex-direction:row;
+      align-items:center;
+      gap:12px;
+      margin-bottom:40px;
     }
 
     .row, .row.top{grid-template-columns:1fr;gap:36px;}
@@ -188,7 +201,7 @@
 
   <div class="top-links">
     <a href="https://linkedin.com/in/sébastien-lemyre-a2437113b/" target="_blank">LinkedIn</a>
-    <a href="https://sebass182.wixsite.com/slemyre" target="_blank">Portfolio</a>
+    <a class="primary" href="https://sebass182.wixsite.com/slemyre" target="_blank">Portfolio</a>
   </div>
 
   <div class="block">
