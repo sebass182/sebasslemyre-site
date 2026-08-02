@@ -101,10 +101,21 @@
     order:-1;
     margin-top:0;
     margin-bottom:56px;
+  }
+  .signature .name{
+    display:block;
     font-size:clamp(2.8rem, 9vw, 5.6rem);
     font-weight:900;
     letter-spacing:-0.02em;
     line-height:0.95;
+    text-transform:uppercase;
+  }
+  .signature .tagline{
+    display:block;
+    margin-top:14px;
+    font-size:0.7rem;
+    font-weight:700;
+    letter-spacing:0.08em;
     text-transform:uppercase;
   }
 
@@ -180,20 +191,20 @@
         </div>
       </div>
       <div class="col">
-        <span class="label">Intérêts</span>
-        <div class="list">
-          <p>Photographie de voyage</p>
-          <p>Voyage & découverte</p>
-          <p>Réalisation vidéo (drone)</p>
-        </div>
-      </div>
-      <div class="col">
         <span class="label">Compétences</span>
         <div class="list">
           <p>CRO & optimisation</p>
           <p>Prototypage</p>
           <p>Design systems</p>
           <p>Direction créative</p>
+        </div>
+      </div>
+      <div class="col">
+        <span class="label">Intérêts</span>
+        <div class="list">
+          <p>Photographie de voyage</p>
+          <p>Voyage & découverte</p>
+          <p>Réalisation vidéo (drone)</p>
         </div>
       </div>
     </div>
@@ -266,7 +277,10 @@
     </div>
   </div>
 
-  <div class="signature">Sébastien<br>Lemyre</div>
+  <div class="signature">
+    <span class="name">Sébastien<br>Lemyre</span>
+    <span class="tagline">Designer UI/UX Senior.</span>
+  </div>
 
 </div>
 
