@@ -105,7 +105,18 @@
   }
 
   @media (max-width:640px){
-    .sheet{padding:40px 24px;}
+    .sheet{
+      padding:40px 24px;
+      display:flex;
+      flex-direction:column;
+    }
+
+    /* move the big name from the bottom to the top on mobile */
+    .signature{
+      order:-1;
+      margin-top:0;
+      margin-bottom:40px;
+    }
 
     .row, .row.thirds{grid-template-columns:1fr;gap:36px;}
     .block{margin-bottom:32px;}
@@ -141,13 +152,13 @@
         </div>
       </div>
       <div class="col">
-        <span class="label">About</span>
+        <span class="label">À propos</span>
         <div class="about">
           <p>Designer UI/UX Senior cumulant plus de 20 ans d'expérience. Ma démarche repose sur la rigueur esthétique et l'alignement stratégique des interfaces sur les objectifs d'affaires. Expert en transition d'agence et optimisation de conversion (CRO), avec un passage clé chez SmartBug Media suite à la fusion Globalia.</p>
         </div>
       </div>
       <div class="col">
-        <span class="label">Resume</span>
+        <span class="label">Liens</span>
         <div class="resume">
           <a href="https://linkedin.com/in/sébastien-lemyre-a2437113b/" target="_blank">LinkedIn</a>
           <a href="https://sebass182.wixsite.com/slemyre" target="_blank">Portfolio</a>
@@ -188,8 +199,8 @@
 
   <div class="block">
     <div class="exp-header">
-      <span class="label">Experience</span>
-      <span class="label">Title</span>
+      <span class="label">Expérience</span>
+      <span class="label">Titre</span>
       <span></span>
     </div>
     <div class="exp-grid">
@@ -200,7 +211,7 @@
           <p>2023&mdash;Présent</p>
         </div>
         <div>
-          <p class="exp-sub">Title</p>
+          <p class="exp-sub">Titre</p>
           <p>Senior UI Web Designer (Remote)</p>
         </div>
         <div class="exp-desc">
@@ -214,7 +225,7 @@
           <p>2022&mdash;2023</p>
         </div>
         <div>
-          <p class="exp-sub">Title</p>
+          <p class="exp-sub">Titre</p>
           <p>Senior UI Web Designer</p>
         </div>
         <div class="exp-desc">
@@ -228,7 +239,7 @@
           <p>2017&mdash;2020</p>
         </div>
         <div>
-          <p class="exp-sub">Title</p>
+          <p class="exp-sub">Titre</p>
           <p>Designer Web & UI/UX</p>
         </div>
         <div class="exp-desc">
@@ -242,7 +253,7 @@
           <p>2012&mdash;2016</p>
         </div>
         <div>
-          <p class="exp-sub">Title</p>
+          <p class="exp-sub">Titre</p>
           <p>Art Director & Branding</p>
         </div>
         <div class="exp-desc">
