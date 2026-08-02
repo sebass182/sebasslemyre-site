@@ -95,8 +95,12 @@
     display:none;
   }
 
+  /* big name always leads the sheet, both mobile and desktop */
+  .sheet{display:flex;flex-direction:column;}
   .signature{
-    margin-top:60px;
+    order:-1;
+    margin-top:0;
+    margin-bottom:56px;
     font-size:clamp(2.8rem, 9vw, 5.6rem);
     font-weight:900;
     letter-spacing:-0.02em;
@@ -105,25 +109,22 @@
   }
 
   @media (max-width:640px){
-    .sheet{
-      padding:40px 24px;
-      display:flex;
-      flex-direction:column;
-    }
-
-    /* move the big name from the bottom to the top on mobile */
-    .signature{
-      order:-1;
-      margin-top:0;
-      margin-bottom:40px;
-    }
+    .sheet{padding:40px 24px;}
 
     .row, .row.thirds{grid-template-columns:1fr;gap:36px;}
     .block{margin-bottom:32px;}
 
-    /* experience: hide the standalone header row (it has nothing to stay glued to)
-       and instead label each field inline per entry, so meaning survives the stack */
-    .exp-header{display:none;}
+    /* experience: keep the "Expérience" title visible on mobile as a normal
+       section label, but drop "Titre" here since each entry repeats it inline */
+    .exp-header{
+      display:block;
+      padding-bottom:8px;
+      margin-bottom:20px;
+      border-bottom:1px solid var(--ink);
+    }
+    .exp-header .label:nth-child(2),
+    .exp-header .label:nth-child(3){display:none;}
+
     .exp-grid{grid-template-columns:1fr;gap:10px;}
     .exp-entry{
       display:grid;
