@@ -193,6 +193,22 @@
     .exp-entry:last-child{border-bottom:none;}
     /* "Titre" label stays hidden on mobile; the gap above replaces it */
   }
+
+  @media print{
+    body{background:var(--paper); padding:0;}
+    .sheet{
+      max-width:none;
+      box-shadow:none;
+      border-radius:0;
+      padding:32px 40px;
+    }
+    .top-links a{
+      -webkit-print-color-adjust:exact;
+      print-color-adjust:exact;
+    }
+    .exp-entry{break-inside:avoid;}
+    .block{break-inside:avoid;}
+  }
 </style>
 </head>
 <body>
