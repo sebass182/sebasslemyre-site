@@ -194,20 +194,36 @@
     /* "Titre" label stays hidden on mobile; the gap above replaces it */
   }
 
+  @page{size:8.5in 11in;margin:0;}
+
+  /* one-page Letter export: tight spacing, real selectable text */
   @media print{
-    body{background:var(--paper); padding:0;}
-    .sheet{
-      max-width:none;
-      box-shadow:none;
-      border-radius:0;
-      padding:32px 40px;
-    }
-    .top-links a{
+    html,body{
+      background:var(--paper);
       -webkit-print-color-adjust:exact;
       print-color-adjust:exact;
     }
+    body{padding:0;}
+    .sheet{
+      max-width:none;
+      height:11in;
+      overflow:hidden;
+      box-shadow:none;
+      border-radius:0;
+      padding:52px 56px 0;
+    }
+    .top-links{top:52px;right:56px;}
+    .top-links a{padding:7px 18px;font-size:0.72rem;}
+    .signature{margin-bottom:34px;}
+    .signature .name{font-size:3.9rem;}
+    .signature .tagline{margin-top:12px;}
+    .block{margin-bottom:26px;}
+    .col .label{margin-bottom:14px;padding-bottom:7px;}
+    .exp-header{margin-bottom:14px;padding-bottom:7px;}
+    .row{gap:28px;}
+    .exp-grid{gap:28px;row-gap:18px;}
+    p{font-size:0.78rem;line-height:1.5;}
     .exp-entry{break-inside:avoid;}
-    .block{break-inside:avoid;}
   }
 </style>
 </head>
