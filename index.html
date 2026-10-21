@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sébastien Lemyre | Senior UI/UX Designer</title>
+<title>Sébastien Lemyre | Designer UI/UX Senior</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
@@ -30,8 +30,11 @@
     padding:56px 60px 64px;
     border-radius:24px;
     box-shadow:0 40px 80px rgba(0,0,0,.5);
+    display:flex;
+    flex-direction:column;
   }
 
+  /* top-right pills: LinkedIn, Portfolio, language toggle */
   .top-links{
     position:absolute;
     top:56px;
@@ -41,21 +44,26 @@
     align-items:flex-end;
     gap:10px;
   }
-  .top-links a{
+  .top-links a,
+  .top-links button{
+    font-family:inherit;
+    line-height:normal;
     color:var(--ink);
+    background:transparent;
     text-decoration:none;
     font-size:0.75rem;
     font-weight:600;
     padding:8px 20px;
     border:1px solid var(--ink);
     border-radius:999px;
+    cursor:pointer;
     transition:background-color .15s, color .15s;
   }
-  .top-links a:hover{
+  .top-links a:hover,
+  .top-links button:hover{
     background:var(--ink);
     color:var(--paper);
   }
-
   .top-links a.primary{
     background:var(--ink);
     color:var(--paper);
@@ -64,17 +72,21 @@
     background:transparent;
     color:var(--ink);
   }
+  .top-links button:focus-visible,
+  .top-links a:focus-visible{
+    outline:2px solid var(--ink);
+    outline-offset:2px;
+  }
+  .lang-toggle{letter-spacing:0.08em;}
 
   .block{margin-bottom:44px;}
 
-  /* each column keeps its own label glued to its own content;
-     same column template on every row so both rows line up */
+  /* each column keeps its own label glued to its own content */
   .row{
     display:grid;
     grid-template-columns:1fr 1fr 1fr;
     gap:32px;
   }
-
   .row.top{grid-template-columns:1fr 2fr;}
 
   .col{display:flex;flex-direction:column;}
@@ -121,18 +133,8 @@
   }
   .exp-entry{display:contents;}
   .exp-desc p{max-width:46ch;}
-  .exp-sub{
-    font-size:0.7rem;
-    font-weight:700;
-    letter-spacing:0.06em;
-    text-transform:uppercase;
-    opacity:.55;
-    margin:0 0 4px;
-    display:none;
-  }
 
   /* big name always leads the sheet, both mobile and desktop */
-  .sheet{display:flex;flex-direction:column;}
   .signature{
     order:-1;
     margin-top:0;
@@ -163,6 +165,7 @@
     .top-links{
       position:static;
       flex-direction:row;
+      flex-wrap:wrap;
       align-items:center;
       gap:12px;
       margin-bottom:40px;
@@ -171,8 +174,8 @@
     .row, .row.top{grid-template-columns:1fr;gap:36px;}
     .block{margin-bottom:32px;}
 
-    /* experience: keep the "Expérience" title visible on mobile as a normal
-       section label, but drop "Titre" here since each entry repeats it inline */
+    /* experience: keep the section title visible on mobile as a normal label,
+       and drop the "Titre" column header since each entry stacks its fields */
     .exp-header{
       display:block;
       padding-bottom:8px;
@@ -191,7 +194,6 @@
       border-bottom:1px solid rgba(26,26,219,0.15);
     }
     .exp-entry:last-child{border-bottom:none;}
-    /* "Titre" label stays hidden on mobile; the gap above replaces it */
   }
 
   @page{size:8.5in 11in;margin:0;}
@@ -204,25 +206,25 @@
       print-color-adjust:exact;
     }
     body{padding:0;}
+    .lang-toggle{display:none;}
     .sheet{
       max-width:none;
-      height:11in;
-      overflow:hidden;
+      min-height:11in;
       box-shadow:none;
       border-radius:0;
-      padding:52px 56px 0;
+      padding:44px 52px 0;
     }
-    .top-links{top:52px;right:56px;}
-    .top-links a{padding:7px 18px;font-size:0.72rem;}
-    .signature{margin-bottom:34px;}
-    .signature .name{font-size:3.9rem;}
-    .signature .tagline{margin-top:12px;}
-    .block{margin-bottom:26px;}
-    .col .label{margin-bottom:14px;padding-bottom:7px;}
-    .exp-header{margin-bottom:14px;padding-bottom:7px;}
-    .row{gap:28px;}
-    .exp-grid{gap:28px;row-gap:18px;}
-    p{font-size:0.78rem;line-height:1.5;}
+    .top-links{top:44px;right:52px;}
+    .top-links a{padding:6px 16px;font-size:0.68rem;}
+    .signature{margin-bottom:24px;}
+    .signature .name{font-size:3.5rem;}
+    .signature .tagline{margin-top:10px;}
+    .block{margin-bottom:20px;}
+    .col .label{margin-bottom:11px;padding-bottom:6px;}
+    .exp-header{margin-bottom:11px;padding-bottom:6px;}
+    .row{gap:24px;}
+    .exp-grid{gap:24px;row-gap:11px;}
+    p{font-size:0.72rem;line-height:1.45;}
     .exp-entry{break-inside:avoid;}
   }
 </style>
@@ -232,25 +234,29 @@
 <div class="sheet">
 
   <div class="top-links">
-    <a href="https://linkedin.com/in/sébastien-lemyre-a2437113b/" target="_blank">LinkedIn</a>
-    <a class="primary" href="https://www.figma.com/proto/5RNPLPZEbWDvy4BZKNiyjh/slide-portfolio---2026?node-id=222-11136&p=f&viewport=275%2C119%2C0.04&t=uY3KGU87EvQkhkP5-8&scaling=contain&content-scaling=fixed&page-id=209%3A75404&hide-ui=1" target="_blank">Portfolio</a>
+    <a href="https://www.linkedin.com/in/sebastien-lemyre/" target="_blank" rel="noopener">LinkedIn</a>
+    <a class="primary" id="portfolio-link"
+       href="https://www.figma.com/proto/5RNPLPZEbWDvy4BZKNiyjh/slide-portfolio---2026?node-id=282-13007&viewport=198%2C253%2C0.03&t=VkCtByFnGAAYbcDr-8&scaling=contain&content-scaling=fixed&page-id=282%3A6981&hide-ui=1"
+       data-href-fr="https://www.figma.com/proto/5RNPLPZEbWDvy4BZKNiyjh/slide-portfolio---2026?node-id=282-13007&viewport=198%2C253%2C0.03&t=VkCtByFnGAAYbcDr-8&scaling=contain&content-scaling=fixed&page-id=282%3A6981&hide-ui=1"
+       data-href-en="https://www.figma.com/proto/5RNPLPZEbWDvy4BZKNiyjh/slide-portfolio---2026?node-id=314-18879&viewport=-54%2C46%2C0.04&t=Ja2KJp9nGdP2ZkWf-8&scaling=contain&content-scaling=fixed&page-id=314%3A6660&hide-ui=1"
+       target="_blank" rel="noopener">Portfolio</a>
+    <button type="button" class="lang-toggle" id="lang-toggle" aria-label="Switch to English" lang="en">EN</button>
   </div>
 
   <div class="block">
     <div class="row top">
       <div class="col">
-        <span class="label">Contact</span>
+        <span class="label" data-i18n="l_contact">Contact</span>
         <div class="contact">
-          <p>Sébastien Lemyre</p>
-          <p><a href="tel:+15144428885">514.442.8885</a></p>
+          <p><a href="tel:+15144428885" data-i18n="phone">514.442.8885</a></p>
           <p><a href="mailto:sebasslemyre@gmail.com">sebasslemyre@gmail.com</a></p>
-          <p>St-Jean-sur-Richelieu, QC</p>
+          <p data-i18n="location">St-Jean-sur-Richelieu, QC</p>
         </div>
       </div>
       <div class="col">
-        <span class="label">À propos</span>
+        <span class="label" data-i18n="l_about">À propos</span>
         <div class="about">
-          <p>Designer UI/UX Senior avec 15 ans d'expertise dans la conception d'interfaces web et mobiles. Spécialisé dans le prototypage haute fidélité, la direction créative et l'élaboration de bibliothèques de composants Figma. Je fais le pont entre la création visuelle et le développement pour livrer des produits numériques d'exception.</p>
+          <p data-i18n="about">Designer UI/UX Senior avec plus de 20 ans d'expérience en design graphique et web. Spécialisé en interfaces web et mobiles, prototypage haute fidélité, direction créative et bibliothèques de composants Figma. Je fais le pont entre la création visuelle et le développement.</p>
         </div>
       </div>
     </div>
@@ -259,31 +265,30 @@
   <div class="block">
     <div class="row thirds">
       <div class="col">
-        <span class="label">Expertise</span>
+        <span class="label" data-i18n="l_tools">Outils</span>
         <div class="list">
           <p>Figma</p>
-          <p>Suite Adobe CC</p>
-          <p>WordPress</p>
-          <p>Outils IA : Midjourney, Ideogram, Claude Code, Suno, Veo, Gemini, NotebookLM</p>
+          <p data-i18n="tools_2">Suite Adobe CC · WordPress</p>
+          <p data-i18n="tools_3">IA : Midjourney, Ideogram, Claude Code, Suno, Veo, Gemini, NotebookLM</p>
         </div>
       </div>
       <div class="col">
-        <span class="label">Compétences</span>
+        <span class="label" data-i18n="l_skills">Compétences</span>
         <div class="list">
-          <p>Design systems & Composants</p>
-          <p>Prototypage haute fidélité</p>
-          <p>Direction créative & Branding</p>
-          <p>Architecture de l'information</p>
-          <p>IA générative</p>
+          <p data-i18n="sk_1">Bibliothèques de composants Figma</p>
+          <p data-i18n="sk_2">Prototypage haute fidélité</p>
+          <p data-i18n="sk_3">Direction créative & Branding</p>
+          <p data-i18n="sk_4">Architecture de l'information</p>
+          <p data-i18n="sk_5">IA générative</p>
         </div>
       </div>
       <div class="col">
-        <span class="label">Intérêts</span>
+        <span class="label" data-i18n="l_interests">Intérêts</span>
         <div class="list">
-          <p>Photographie & Drone</p>
-          <p>Création musicale & Audio génératif</p>
-          <p>Curation typographique & Culture visuelle</p>
-          <p>Fat-bike & Exploration plein air</p>
+          <p data-i18n="in_1">Photographie & Drone</p>
+          <p data-i18n="in_2">Création musicale & Audio génératif</p>
+          <p data-i18n="in_3">Curation typographique & Culture visuelle</p>
+          <p data-i18n="in_4">Fat-bike & Exploration plein air</p>
         </div>
       </div>
     </div>
@@ -291,8 +296,8 @@
 
   <div class="block">
     <div class="exp-header">
-      <span class="label">Expérience</span>
-      <span class="label">Titre</span>
+      <span class="label" data-i18n="l_exp">Expérience</span>
+      <span class="label" data-i18n="l_title">Titre</span>
       <span></span>
     </div>
     <div class="exp-grid">
@@ -300,43 +305,37 @@
       <div class="exp-entry">
         <div class="exp-company">
           <p>SmartBug Media</p>
-          <p>2024&mdash;2026</p>
+          <p>2023&mdash;2026</p>
         </div>
-        <div>
-          <p class="exp-sub">Titre</p>
-          <p>Senior UI/UX & Lead Product Designer</p>
-        </div>
-        <div class="exp-desc">
-          <p>Pilotage de la vision UX/UI et standardisation des livrables pour le marché américain post-acquisition. Conception de Design Systems complexes, d'écosystèmes Inbound (HubSpot) et intégration de workflows d'IA générative et conversationnelle (LLM) pour des comptes majeurs.</p>
-        </div>
+        <div><p data-i18n="e1_title">Senior UI/UX Web Designer</p></div>
+        <div class="exp-desc"><p data-i18n="e1_desc">Pilotage UX/UI et standardisation des livrables pour le marché américain post-acquisition. Composants Figma, écosystèmes HubSpot et interfaces d'IA conversationnelle (LLM).</p></div>
       </div>
 
       <div class="exp-entry">
         <div class="exp-company">
           <p>Globalia</p>
-          <p>2022&mdash;2024</p>
+          <p>2022&mdash;2023</p>
         </div>
-        <div>
-          <p class="exp-sub">Titre</p>
-          <p>UI/UX Designer & Directeur Artistique</p>
+        <div><p data-i18n="e2_title">Senior UI/UX Web Designer & Directeur artistique</p></div>
+        <div class="exp-desc"><p data-i18n="e2_desc">Direction artistique et UX/UI pour Canam, HoloMD, Camping Québec et Lavigueur : plateformes B2C/B2B, e‑commerce Magento, portails SaaS.</p></div>
+      </div>
+
+      <div class="exp-entry">
+        <div class="exp-company">
+          <p data-i18n="e3_co">Pigiste</p>
+          <p>2020&mdash;2022</p>
         </div>
-        <div class="exp-desc">
-          <p>Direction artistique globale de la marque et conception UX/UI pour des comptes majeurs (Canam, HoloMD, Camping Québec, Lavigueur). Architecture de plateformes complexes B2C/B2B, e-commerce Magento et portails SaaS.</p>
-        </div>
+        <div><p data-i18n="e3_title">Designer graphique et web</p></div>
+        <div class="exp-desc"><p data-i18n="e3_desc">Design graphique et web en travail autonome.</p></div>
       </div>
 
       <div class="exp-entry">
         <div class="exp-company">
           <p>Inovision Web</p>
-          <p>2017&mdash;2021</p>
+          <p>2017&mdash;2020</p>
         </div>
-        <div>
-          <p class="exp-sub">Titre</p>
-          <p>Designer UI/UX</p>
-        </div>
-        <div class="exp-desc">
-          <p>Spécialisation UX et intégration d'interfaces complexes sous WordPress.</p>
-        </div>
+        <div><p data-i18n="e4_title">Designer Web UI/UX</p></div>
+        <div class="exp-desc"><p data-i18n="e4_desc">Sites web pour des PME et design graphique imprimé. Spécialisation UX et intégration sous WordPress.</p></div>
       </div>
 
       <div class="exp-entry">
@@ -344,24 +343,148 @@
           <p>Empire Sport</p>
           <p>2012&mdash;2016</p>
         </div>
-        <div>
-          <p class="exp-sub">Titre</p>
-          <p>Directeur artistique & Image de marque</p>
+        <div><p data-i18n="e5_title">Designer principal</p></div>
+        <div class="exp-desc"><p data-i18n="e5_desc">Identité visuelle de 11 boutiques et du site e‑commerce, campagnes et événements sur mesure, produits dérivés, direction photo/vidéo.</p></div>
+      </div>
+
+      <div class="exp-entry">
+        <div class="exp-company">
+          <p data-i18n="e6_co">Antérieures</p>
         </div>
-        <div class="exp-desc">
-          <p>Direction de l'identité visuelle globale pour 11 boutiques et la plateforme e-commerce. Création de la marque et des campagnes promotionnelles pour des événements corporatifs et compétitions créés sur mesure, design de produits dérivés et direction photo/vidéo.</p>
-        </div>
+        <div><p data-i18n="e6_title">Graphiste et graphiste web</p></div>
+        <div class="exp-desc"><p>MXO Agence totale, Orbite Sports, Les Solutions PowerSurfer.</p></div>
       </div>
 
     </div>
   </div>
 
+  <div class="block">
+    <div class="row thirds">
+      <div class="col">
+        <span class="label" data-i18n="l_edu">Formation</span>
+        <div class="list">
+          <p data-i18n="edu_1">Photographie & design graphique</p>
+          <p>Collège Marsan</p>
+        </div>
+      </div>
+      <div class="col">
+        <span class="label" data-i18n="l_lang">Langues</span>
+        <div class="list">
+          <p data-i18n="lang_1">Français — langue maternelle</p>
+          <p data-i18n="lang_2">Anglais — avancé, oral fonctionnel</p>
+        </div>
+      </div>
+      <div class="col">
+        <span class="label" data-i18n="l_avail">Disponibilité</span>
+        <div class="list">
+          <p data-i18n="av_1">Télétravail · Temps plein</p>
+          <p data-i18n="av_2">Canada et États-Unis</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="signature">
     <span class="name">Sébastien<br>Lemyre</span>
-    <span class="tagline">Designer UI/UX Senior</span>
+    <span class="tagline" data-i18n="tagline">Designer UI/UX Senior</span>
   </div>
 
 </div>
+
+<script>
+(function () {
+  var STORAGE_KEY = 'cv-lang';
+
+  // English strings, keyed by data-i18n. French is read from the HTML itself.
+  var EN = {
+    title: 'Sébastien Lemyre | Senior UI/UX Designer',
+    tagline: 'Senior UI/UX Designer',
+    l_contact: 'Contact',
+    phone: '+1 514 442 8885',
+    location: 'St-Jean-sur-Richelieu, QC, Canada',
+    l_about: 'About',
+    about: 'Senior UI/UX designer with 20+ years of experience in graphic and web design. Specialized in web and mobile interfaces, high-fidelity prototyping, creative direction and Figma component libraries. I bridge visual design and development.',
+    l_tools: 'Tools',
+    tools_2: 'Adobe CC · WordPress',
+    tools_3: 'AI: Midjourney, Ideogram, Claude Code, Suno, Veo, Gemini, NotebookLM',
+    l_skills: 'Skills',
+    sk_1: 'Figma component libraries',
+    sk_2: 'High-fidelity prototyping',
+    sk_3: 'Creative direction & branding',
+    sk_4: 'Information architecture',
+    sk_5: 'Generative AI',
+    l_interests: 'Interests',
+    in_1: 'Photography & drone',
+    in_2: 'Music production & generative audio',
+    in_3: 'Type curation & visual culture',
+    in_4: 'Fat-biking & outdoor exploration',
+    l_exp: 'Experience',
+    l_title: 'Title',
+    e1_title: 'Senior UI/UX Web Designer',
+    e1_desc: 'Led UX/UI and standardized deliverables for the U.S. market after the acquisition. Figma component libraries, HubSpot ecosystems and conversational AI (LLM) interfaces.',
+    e2_title: 'Senior UI/UX Web Designer & Art Director',
+    e2_desc: 'Art direction and UX/UI for Canam, HoloMD, Camping Québec and Lavigueur: B2C/B2B platforms, Magento e‑commerce, SaaS portals.',
+    e3_co: 'Freelance',
+    e3_title: 'Graphic & Web Designer',
+    e3_desc: 'Independent graphic and web design work.',
+    e4_title: 'UI/UX Web Designer',
+    e4_desc: 'Websites for SMBs and print graphic design. UX focus and WordPress integration.',
+    e5_title: 'Lead Designer',
+    e5_desc: 'Visual identity for 11 stores and the e‑commerce site, custom campaigns and events, merchandise, photo/video direction.',
+    e6_co: 'Earlier',
+    e6_title: 'Graphic & Web Designer',
+    l_edu: 'Education',
+    edu_1: 'Photography & Graphic Design',
+    l_lang: 'Languages',
+    lang_1: 'French — native',
+    lang_2: 'English — professional working',
+    l_avail: 'Availability',
+    av_1: 'Remote · Full-time',
+    av_2: 'Canada & United States'
+  };
+
+  var FR = { title: document.title };
+  var nodes = Array.prototype.slice.call(document.querySelectorAll('[data-i18n]'));
+  nodes.forEach(function (el) { FR[el.getAttribute('data-i18n')] = el.textContent; });
+
+  var toggle = document.getElementById('lang-toggle');
+  var portfolio = document.getElementById('portfolio-link');
+
+  function initialLang() {
+    var q = new URLSearchParams(window.location.search).get('lang');
+    if (q === 'en' || q === 'fr') return q;
+    try {
+      var saved = window.localStorage.getItem(STORAGE_KEY);
+      if (saved === 'en' || saved === 'fr') return saved;
+    } catch (e) {}
+    return 'fr';
+  }
+
+  function apply(lang) {
+    var dict = lang === 'en' ? EN : FR;
+    document.documentElement.lang = lang;
+    document.title = dict.title;
+    nodes.forEach(function (el) {
+      var key = el.getAttribute('data-i18n');
+      if (dict[key] !== undefined) el.textContent = dict[key];
+      else el.textContent = FR[key];
+    });
+    portfolio.href = portfolio.getAttribute('data-href-' + lang);
+    toggle.textContent = lang === 'en' ? 'FR' : 'EN';
+    toggle.setAttribute('lang', lang === 'en' ? 'fr' : 'en');
+    toggle.setAttribute('aria-label', lang === 'en' ? 'Passer au français' : 'Switch to English');
+    toggle.setAttribute('data-lang', lang);
+  }
+
+  toggle.addEventListener('click', function () {
+    var next = toggle.getAttribute('data-lang') === 'en' ? 'fr' : 'en';
+    apply(next);
+    try { window.localStorage.setItem(STORAGE_KEY, next); } catch (e) {}
+  });
+
+  apply(initialLang());
+})();
+</script>
 
 </body>
 </html>
